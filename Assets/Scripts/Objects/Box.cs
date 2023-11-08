@@ -171,6 +171,7 @@ public class Box : MonoBehaviour
             switch (hits[i].transform.tag)
             {
                 case "ground":
+                    Debug.Log("Hits:" + hits[i].point.x + ", " + hits[i].point.y);
                     if (dir.x != 0)
                     {
                         float margin_dir = (hits[i].transform.position.x - hits[i].point.x) / Mathf.Abs((hits[i].transform.position.x - hits[i].point.x));
