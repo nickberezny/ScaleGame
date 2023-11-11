@@ -11,6 +11,7 @@ public class PlayerMotor : MonoBehaviour
     float dt = 0;
     [SerializeField] float velocity;
     [SerializeField] Collider2D collCast;
+    [SerializeField] GameObject[] earObjs;
 
     bool isFalling = false;
     
@@ -26,6 +27,17 @@ public class PlayerMotor : MonoBehaviour
     {
         dt = Time.deltaTime;
         //Debug.Log(Mathf.Abs(rb.velocity.y));
+
+        if(Input.GetKey(KeyCode.P))
+        {
+            for (int i = 0; i < earObjs.Length; i++)
+            {
+                Destroy(earObjs[i].GetComponent<Joint2D>());
+                Destroy(earObjs[i].GetComponent<EarSpring>());
+                earObjs[i].transform.parent = null;
+
+            }
+        }
 
         if (Mathf.Abs(rb.velocity.y) > 0.2f)
         {

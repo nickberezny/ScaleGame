@@ -11,11 +11,13 @@ public class Worm : MonoBehaviour
     [SerializeField] Collider2D castColl;
 
     PlayerMotor motor;
+    SpriteRenderer renderer;
 
 
     private void Awake()
     {
         castColl.enabled = false;
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class Worm : MonoBehaviour
         dt = Time.deltaTime;
         CheckCollisionAndGround(dt);
         transform.position += new Vector3(dir * speed * dt, 0, 0);
+        renderer.flipX = dir<0;
     }
 
     void CheckCollisionAndGround(float dt)
@@ -50,7 +53,8 @@ public class Worm : MonoBehaviour
         }
 
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + transform.localScale.x / 2.0f + dir * 1.05f * speed * dt, transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
-        if (!hit) dir = - dir;
+        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(transform.position.x + transform.localScale.x / 2.0f + dir * 110.0f * speed * dt, transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
+        if (!hit && !hit2) dir = - dir;
 
     }
 
