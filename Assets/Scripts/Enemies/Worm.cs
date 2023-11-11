@@ -1,16 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Worm : MonoBehaviour
 {
     [SerializeField] float speed;
     float dt = 0;
+    float dir = 1;
+    [SerializeField] Collider2D castColl;
+
+    PlayerMotor motor;
+
+
+    private void Awake()
+    {
+        castColl.enabled = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
         dt = Time.deltaTime;
-        transform.position += new Vector3(speed * dt, 0, 0);
+        CheckCollisionAndGround(dt);
+        transform.position += new Vector3(dir * speed * dt, 0, 0);
     }
+
+    void CheckCollisionAndGround(float dt)
+    {
+        RaycastHit2D[] hits = new RaycastHit2D[10];
+        castColl.enabled = true;
+        int count = castColl.Cast(new Vector2(dir,0), hits, 1.05f*speed*dt);
+        castColl.enabled = false;
+
+        for (int i = 0; i <count; i++)
+        {
+            if (hits[i].transform.TryGetComponent<PlayerMotor>(out motor))
+            {
+                //kill play
+                SceneManager.LoadScene("Level4");
+                break;
+            }   
+            if (hits[i].transform.tag == "box" || hits[i].transform.tag == "ground")
+            {
+                dir = -dir;
+                break;
+            }
+
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + transform.localScale.x / 2.0f + dir * 1.05f * speed * dt, transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
+        if (!hit) dir = - dir;
+
+    }
+
+    //check collision & if ground -> change dir
+    //move
 }

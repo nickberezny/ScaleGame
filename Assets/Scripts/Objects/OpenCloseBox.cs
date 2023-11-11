@@ -6,6 +6,12 @@ public class OpenCloseBox : MonoBehaviour
 {
 
     [SerializeField] Box boxParent;
+    GameManager gm;
+
+    public void SetGM(GameManager manager)
+    {
+        gm = manager;
+    }
 
     private void Update()
     {
@@ -16,9 +22,9 @@ public class OpenCloseBox : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("Click!");
-        boxParent.changeBoxStatus(!boxParent.pausePhysics);
-
-
+        // boxParent.changeBoxStatus(!boxParent.pausePhysics);
+        if (boxParent.pausePhysics) gm.deactivate(boxParent.index);
+        else if(!boxParent.pausePhysics) gm.requestActive(boxParent.index);
     }
 
 }
