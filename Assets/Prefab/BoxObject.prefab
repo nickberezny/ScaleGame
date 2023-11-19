@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6178283553876158089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0, z: -0.05}
-  m_LocalScale: {x: 0.05, y: 1, z: 1}
+  m_LocalScale: {x: 0.03, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6178283554882115133}
   m_RootOrder: 3
@@ -633,7 +633,7 @@ Transform:
   m_GameObject: {fileID: 6178283554761337861}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: -0.05}
-  m_LocalScale: {x: 0.05, y: 1, z: 1}
+  m_LocalScale: {x: 0.03, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6178283554882115133}
   m_RootOrder: 1
@@ -951,7 +951,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f7534d7c92030464081d7c3eb6c3e405, type: 3}
-  m_Color: {r: 0.6494749, g: 0.990566, b: 0.6831181, a: 1}
+  m_Color: {r: 0.99215686, g: 0.67409486, b: 0.6509804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1044,7 +1044,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0021435022}
+  m_Offset: {x: 0, y: 0.005325228}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1055,7 +1055,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9462323, y: 0.9579294}
+  m_Size: {x: 0.9462323, y: 0.9471136}
   m_EdgeRadius: 0
 --- !u!1 &6178283555432581227
 GameObject:
@@ -1338,7 +1338,7 @@ Transform:
   m_GameObject: {fileID: 6178283555790215197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: -0.05}
-  m_LocalScale: {x: 1, y: 0.05, z: 1}
+  m_LocalScale: {x: 1, y: 0.03, z: 1}
   m_Children: []
   m_Father: {fileID: 6178283554882115133}
   m_RootOrder: 2
@@ -1563,7 +1563,7 @@ Transform:
   m_GameObject: {fileID: 6178283555828913746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: -0.05}
-  m_LocalScale: {x: 1, y: 0.05, z: 1}
+  m_LocalScale: {x: 1, y: 0.03, z: 1}
   m_Children: []
   m_Father: {fileID: 6178283554882115133}
   m_RootOrder: 0

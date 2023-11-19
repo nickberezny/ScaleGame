@@ -55,10 +55,19 @@ public class Box : MonoBehaviour
     private void Update()
     {
 
-        
 
-        if (pausePhysics) rb.Sleep();
-        if (!pausePhysics && rb.IsSleeping()) rb.WakeUp();
+
+        if (pausePhysics)
+        {
+            rb.gravityScale = 0.0f;
+            rb.Sleep();
+        }
+        if (!pausePhysics && rb.IsSleeping())
+        {
+            rb.gravityScale = 1.0f;
+            rb.WakeUp();
+        }
+
 
         x0 = transform.position.x - localScaleTransformer.x * transform.localScale.x / 2.0f;
         x1 = transform.position.x + localScaleTransformer.x * transform.localScale.x / 2.0f;
@@ -183,10 +192,10 @@ public class Box : MonoBehaviour
         }
 
 
-        if (xn0 > x1 - 0.1f) xn0 = x1 - 0.1f;
-        if (xn1 < x0 + 0.1f) xn1 = x0 + 0.1f;
-        if (yn0 > y1 - 0.1f) yn0 = y1 - 0.1f;
-        if (yn1 < y0 + 0.1f) yn1 = y0 + 0.1f; 
+        if (xn0 > x1 - 0.01f) xn0 = x1 - 0.01f;
+        if (xn1 < x0 + 0.01f) xn1 = x0 + 0.01f;
+        if (yn0 > y1 - 0.01f) yn0 = y1 - 0.01f;
+        if (yn1 < y0 + 0.01f) yn1 = y0 + 0.01f; 
 
 
         transform.localScale = new Vector3(Mathf.Abs(xn1-xn0), Mathf.Abs(yn1-yn0), 0.0f);
@@ -223,7 +232,8 @@ public class Box : MonoBehaviour
             switch (hits[i].transform.tag)
             {
                 case "ground":
-                    //Debug.Log("Hits:" + hits[i].point.x + ", " + hits[i].point.y);
+                    Debug.Log("Hits:" + hits[i].collider.bounds.max);
+                    Debug.Log("Hits:" + hits[i].point.y);
                     if (dir.x != 0)
                     {
                         float margin_dir = (hits[i].transform.position.x - hits[i].point.x) / Mathf.Abs((hits[i].transform.position.x - hits[i].point.x));
@@ -252,6 +262,7 @@ public class Box : MonoBehaviour
                         if (dir.y != 0)
                         {
                             float margin_dir = (hits[i].transform.position.y - hits[i].point.y) / Mathf.Abs((hits[i].transform.position.y - hits[i].point.y));
+                            Debug.Log("Box hit new: " + (newPoint.y));// - margin_dir * margin));
                             return newPoint.y - margin_dir * margin;
                         }
                     }

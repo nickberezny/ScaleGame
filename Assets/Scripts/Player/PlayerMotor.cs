@@ -14,6 +14,7 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] GameObject[] earObjs;
 
     bool isFalling = false;
+    public bool controllable = true;
     
 
     private void Awake()
@@ -54,7 +55,7 @@ public class PlayerMotor : MonoBehaviour
 
         anim.SetBool("isWalking", false);
 
-        if (Input.GetKey(KeyCode.RightArrow) && !isFalling)
+        if (Input.GetKey(KeyCode.RightArrow) && !isFalling && controllable)
         {
             if (!checkColl(1))
             {
@@ -64,7 +65,7 @@ public class PlayerMotor : MonoBehaviour
             }
             
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && !isFalling)
+        else if (Input.GetKey(KeyCode.LeftArrow) && !isFalling && controllable)
         {
             if (!checkColl(-1))
             {
