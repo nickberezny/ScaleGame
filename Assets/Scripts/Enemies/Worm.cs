@@ -26,8 +26,9 @@ public class Worm : MonoBehaviour
         dt = Time.deltaTime;
         CheckCollisionAndGround(dt);
         transform.position += new Vector3(dir * speed * dt, 0, 0);
-        renderer.flipX = dir<0;
+        renderer.flipX = dir>0;
     }
+
 
     void CheckCollisionAndGround(float dt)
     {
@@ -44,7 +45,7 @@ public class Worm : MonoBehaviour
                 SceneManager.LoadScene("Level4");
                 break;
             }   
-            if (hits[i].transform.tag == "box" || hits[i].transform.tag == "ground")
+            if (hits[i].transform.tag == "box" || hits[i].transform.tag == "ground" || hits[i].transform.tag == "Flag" ||  hits[i].transform.tag == "Worm")
             {
                 dir = -dir;
                 break;
@@ -52,8 +53,11 @@ public class Worm : MonoBehaviour
 
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + transform.localScale.x / 2.0f + dir * 1.05f * speed * dt, transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
-        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(transform.position.x + transform.localScale.x / 2.0f + dir * 110.0f * speed * dt, transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2((transform.position.x + (dir * transform.localScale.x / 2.0f) + dir * 1.05f * speed * dt), transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
+        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2((transform.position.x + (dir * transform.localScale.x / 2.0f) + dir * 10f * speed * dt), transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
+
+        //RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(transform.position.x + transform.localScale.x / 2.0f + dir * 1.9f * speed * dt, transform.position.y), new Vector2(0, -1), 1.05f * transform.localScale.y / 2.0f);
+        
         if (!hit && !hit2) dir = - dir;
 
     }

@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 883042970}
   - component: {fileID: 883042971}
   - component: {fileID: 6713076823317352121}
+  - component: {fileID: 2066543339}
   m_Layer: 0
   m_Name: Worm
-  m_TagString: Untagged
+  m_TagString: Worm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb939a6068e44ae4cbb7b4bb3e4fc8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1
+  speed: 2
   castColl: {fileID: 6713076823317352121}
 --- !u!50 &883042970
 Rigidbody2D:
@@ -173,3 +174,26 @@ CapsuleCollider2D:
   m_Offset: {x: -0.034508422, y: -0.07507672}
   m_Size: {x: 0.84804857, y: 0.13116805}
   m_Direction: 1
+--- !u!114 &2066543339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069500337991639205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960e0496cbbaa314f80558c956855601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScaleTransformer: {x: 1, y: 1}
+  castColl: {fileID: 6713076823317352121}
+  fixedInPlace: 0
+  bolt: {fileID: 0}
+  index: 0
+  collisionIndexes: 
+  x0: 0
+  x1: 0
+  y0: 0
+  y1: 0
+  pausePhysics: 0

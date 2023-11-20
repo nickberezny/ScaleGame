@@ -17,7 +17,7 @@ public class Box : MonoBehaviour
 
     float xc, yc;
     public float x0, x1, y0, y1;
-    float margin = 0.025f;
+    float margin = 0.0f;
     Collider2D coll;
     Rigidbody2D rb;
     SpriteRenderer renderer;
@@ -192,10 +192,10 @@ public class Box : MonoBehaviour
         }
 
 
-        if (xn0 > x1 - 0.01f) xn0 = x1 - 0.01f;
-        if (xn1 < x0 + 0.01f) xn1 = x0 + 0.01f;
-        if (yn0 > y1 - 0.01f) yn0 = y1 - 0.01f;
-        if (yn1 < y0 + 0.01f) yn1 = y0 + 0.01f; 
+        if (xn0 > x1 - 0.2f) xn0 = x1 - 0.2f;
+        if (xn1 < x0 + 0.2f) xn1 = x0 + 0.2f;
+        if (yn0 > y1 - 0.2f) yn0 = y1 - 0.2f;
+        if (yn1 < y0 + 0.2f) yn1 = y0 + 0.2f; 
 
 
         transform.localScale = new Vector3(Mathf.Abs(xn1-xn0), Mathf.Abs(yn1-yn0), 0.0f);
@@ -221,33 +221,34 @@ public class Box : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-           
 
-            if(dir.x > 0 && hits[i].point.x <= x0 + 0.05f) break;
-            if (dir.x < 0 && hits[i].point.x >= x1 - 0.05f) break;
-            if (dir.y > 0 && hits[i].point.y <= y0 + 0.05f) break;
-            if (dir.y < 0 && hits[i].point.y >= y1 - 0.05f) break;
-
+            //if (dir.x > 0 && hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x <= x0 + 0.01f) break;
+            //if (dir.x < 0 && -hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x >= x1 - 0.01f) break;
+            //if (dir.y > 0 && hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y <= y0 + 0.01f) break;
+            //if (dir.y < 0 && -hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y >= y1 - 0.01f) break;
+            Box b;
 
             switch (hits[i].transform.tag)
             {
                 case "ground":
-                    Debug.Log("Hits:" + hits[i].collider.bounds.max);
-                    Debug.Log("Hits:" + hits[i].point.y);
                     if (dir.x != 0)
                     {
-                        float margin_dir = (hits[i].transform.position.x - hits[i].point.x) / Mathf.Abs((hits[i].transform.position.x - hits[i].point.x));
-                        return hits[i].point.x - margin_dir * margin;
+                        float x_hit = 0;
+                        if (dir.x < 0) x_hit = hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x;
+                        if (dir.x > 0) x_hit = -hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x;
+                        return x_hit;
                     }
                     if (dir.y != 0)
                     {
-                        float margin_dir = (hits[i].transform.position.y - hits[i].point.y) / Mathf.Abs((hits[i].transform.position.y - hits[i].point.y));
-                        return hits[i].point.y - margin_dir * margin;
+                        float y_hit = 0;
+                        if(dir.y < 0) y_hit = hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y;
+                        if (dir.y > 0) y_hit = -hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y;
+                        return y_hit; 
                     }
                     break;
                 case "box":
                     collisionIndexes.Add(index);
-                    Box b = hits[i].transform.GetComponent<Box>();
+                    b = hits[i].transform.GetComponent<Box>();
                     b.collisionIndexes = collisionIndexes;
                     if (!collisionIndexes.Contains(b.index))
                     {
@@ -255,20 +256,42 @@ public class Box : MonoBehaviour
                         Vector2 newPoint = b.MoveCenter(new Vector2(dir.x*(distance+margin), dir.y * (distance + margin)));
                         if (dir.x != 0)
                         {
-                            float margin_dir = (hits[i].transform.position.x - hits[i].point.x) / Mathf.Abs((hits[i].transform.position.x - hits[i].point.x));
-                            return newPoint.x - margin_dir * margin;
+                            float x_hit = 0;
+                            if (dir.x < 0) x_hit = hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x;
+                            if (dir.x > 0) x_hit = -hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x;
+                            return x_hit;
                         }
 
                         if (dir.y != 0)
                         {
-                            float margin_dir = (hits[i].transform.position.y - hits[i].point.y) / Mathf.Abs((hits[i].transform.position.y - hits[i].point.y));
-                            Debug.Log("Box hit new: " + (newPoint.y));// - margin_dir * margin));
-                            return newPoint.y - margin_dir * margin;
+                            float y_hit = 0;
+                            if (dir.y < 0) y_hit = hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y;
+                            if (dir.y > 0) y_hit = -hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y;
+                            return y_hit;
                         }
                     }
-                    
+                    break;
+                case "Worm":
+                    Debug.Log("WORM!" + dir.x + "," + dir.y);
+                    if (dir.y != 0)
+                    {
+                        collisionIndexes.Add(index);
+                        b = hits[i].transform.GetComponent<Box>();
+                        b.collisionIndexes = collisionIndexes;
+                        Vector2 newPoint = b.MoveCenter(new Vector2(dir.x * (distance + margin), dir.y * (distance + margin)));
+                        float y_hit = 0;
+                        if (dir.y < 0) y_hit = hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y;
+                        if (dir.y > 0) y_hit = -hits[i].collider.bounds.extents.y + hits[i].collider.bounds.center.y;
+                        Debug.Log("y_hit" + y_hit);
+                        return y_hit;
+
+                        
+                    }
+                    if (dir.x < 0) return hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x;
+                    if (dir.x > 0) return -hits[i].collider.bounds.extents.x + hits[i].collider.bounds.center.x;
 
                     break;
+
                    
             }
         }
