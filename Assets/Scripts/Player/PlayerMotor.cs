@@ -40,11 +40,11 @@ public class PlayerMotor : MonoBehaviour
             }
         }
 
-        if (Mathf.Abs(rb.velocity.y) > 0.2f)
+        if (Mathf.Abs(rb.velocity.y) > 0.3f)
         {
             anim.SetBool("isFalling", true);
             isFalling = true;
-            //Debug.Log("TRUE!");
+            Debug.Log("TRUE!");
         }
         else
         {

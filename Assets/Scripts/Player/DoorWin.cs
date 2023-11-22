@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class DoorWin : MonoBehaviour
 {
     [SerializeField] string nextSceneName;
+    [SerializeField] AudioClip winClip;
+    AudioManager audioManager;
     SpriteRenderer renderer;
     PlayerMotor temp;
 
     private void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         renderer = GetComponent<SpriteRenderer>();
     }
 
@@ -22,7 +25,7 @@ public class DoorWin : MonoBehaviour
             
             collision.gameObject.GetComponent<Animator>().SetBool("win", true);
             temp.controllable = false;
-
+            audioManager.PlayClip(winClip);
             Debug.Log("WIN!!!");
             StartCoroutine(waitToProceed());
         }

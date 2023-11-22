@@ -191,9 +191,29 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.960489
       objectReference: {fileID: 0}
+    - target: {fileID: 7272721303115201669, guid: 44a1b8651f99bd24f8baab76521e5477, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f7534d7c92030464081d7c3eb6c3e405, type: 3}
+    - target: {fileID: 7272721303115201669, guid: 44a1b8651f99bd24f8baab76521e5477, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272721303115201669, guid: 44a1b8651f99bd24f8baab76521e5477, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272721303115201669, guid: 44a1b8651f99bd24f8baab76521e5477, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7272721303115201670, guid: 44a1b8651f99bd24f8baab76521e5477, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272721303115201670, guid: 44a1b8651f99bd24f8baab76521e5477, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7272721303238763074, guid: 44a1b8651f99bd24f8baab76521e5477, type: 3}
       propertyPath: m_IsActive
