@@ -7,6 +7,12 @@ public class OpenCloseBox : MonoBehaviour
 
     [SerializeField] Box boxParent;
     GameManager gm;
+    AudioSource source;
+
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     public void SetGM(GameManager manager)
     {
@@ -24,7 +30,11 @@ public class OpenCloseBox : MonoBehaviour
         Debug.Log("Click!");
         // boxParent.changeBoxStatus(!boxParent.pausePhysics);
         if (boxParent.pausePhysics) gm.deactivate(boxParent.index);
-        else if(!boxParent.pausePhysics) gm.requestActive(boxParent.index);
+        else if (!boxParent.pausePhysics)
+        {
+            source.Play();
+            gm.requestActive(boxParent.index);
+        }
     }
 
 }

@@ -12,9 +12,12 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] float velocity;
     [SerializeField] Collider2D collCast;
     [SerializeField] GameObject[] earObjs;
-
+    [SerializeField] AudioClip walkingClip;
+    [SerializeField] AudioClip fallingClip;
     bool isFalling = false;
+    bool isWalking = false;
     public bool controllable = true;
+    AudioSource source;
     
 
     private void Awake()
@@ -22,6 +25,7 @@ public class PlayerMotor : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -54,6 +58,7 @@ public class PlayerMotor : MonoBehaviour
         }
 
         anim.SetBool("isWalking", false);
+        isWalking = false;
 
         if (Input.GetKey(KeyCode.RightArrow) && !isFalling && controllable)
         {
@@ -62,6 +67,7 @@ public class PlayerMotor : MonoBehaviour
                 anim.SetBool("isWalking", true);
                 transform.position += new Vector3(velocity * dt, 0, 0);
                 spriteRenderer.flipX = false;
+                isWalking = true;
             }
             
         }
@@ -72,9 +78,23 @@ public class PlayerMotor : MonoBehaviour
                 anim.SetBool("isWalking", true);
                 transform.position -= new Vector3(velocity * dt, 0, 0);
                 spriteRenderer.flipX = true;
+                isWalking = true;
             }
         }
-        
+
+        if (isWalking && (!source.isPlaying || source.clip == fallingClip))
+        {
+            source.clip = walkingClip;
+            source.Play();
+        }
+        else if(isFalling && (!source.isPlaying || source.clip == walkingClip))
+        {
+            source.clip = fallingClip;
+            source.Play();
+        }
+        if (!isWalking && !isFalling && source.isPlaying) source.Stop();
+
+
     }
 
     bool checkColl(int dir)

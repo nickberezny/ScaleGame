@@ -10,10 +10,12 @@ public class DoorWin : MonoBehaviour
     AudioManager audioManager;
     SpriteRenderer renderer;
     PlayerMotor temp;
+    BunTransition transition;
 
     private void Awake()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        transition = FindObjectOfType<BunTransition>();
         renderer = GetComponent<SpriteRenderer>();
     }
 
@@ -35,7 +37,9 @@ public class DoorWin : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         renderer.enabled = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
+        transition.MoveBun();
+        yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene(nextSceneName);
     }
 }

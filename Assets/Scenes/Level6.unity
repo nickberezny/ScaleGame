@@ -1827,6 +1827,10 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: Level7
       objectReference: {fileID: 0}
+    - target: {fileID: 1844377440690738969, guid: 056b6ca253ae5de4186ae7d55db8cb83, type: 3}
+      propertyPath: winClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bd62d7ee827e085458151f6b59d40b3e, type: 3}
     - target: {fileID: 1844377440690738970, guid: 056b6ca253ae5de4186ae7d55db8cb83, type: 3}
       propertyPath: m_Name
       value: Flag
