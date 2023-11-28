@@ -48,7 +48,7 @@ public class PlayerMotor : MonoBehaviour
         {
             anim.SetBool("isFalling", true);
             isFalling = true;
-            Debug.Log("TRUE!");
+
         }
         else
         {
@@ -60,7 +60,7 @@ public class PlayerMotor : MonoBehaviour
         anim.SetBool("isWalking", false);
         isWalking = false;
 
-        if (Input.GetKey(KeyCode.RightArrow) && !isFalling && controllable)
+        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !isFalling && controllable)
         {
             if (!checkColl(1))
             {
@@ -71,7 +71,7 @@ public class PlayerMotor : MonoBehaviour
             }
             
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && !isFalling && controllable)
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))  && !isFalling && controllable)
         {
             if (!checkColl(-1))
             {

@@ -18,7 +18,7 @@ public class OutlineControl : MonoBehaviour
     }
 
 
-    void Update()
+    void LateUpdate()
     {
         if(NW)
         {

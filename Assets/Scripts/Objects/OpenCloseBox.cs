@@ -23,6 +23,28 @@ public class OpenCloseBox : MonoBehaviour
     {
         transform.position = boxParent.transform.position - new Vector3(0, 0, 1.0f);
         transform.localScale = boxParent.transform.localScale;
+
+        if (boxParent.index == gm.activeBox)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(new Vector2(mousePos.x, mousePos.y), new Vector3(0, 0),1f);
+                if (hit)
+                {
+                    Debug.Log(hit.transform.tag);
+                    if (hit.transform.transform.parent.gameObject != boxParent.transform.parent.gameObject)
+                    {
+                        gm.deactivate(boxParent.index);
+                    }
+                }
+                else
+                {
+                    Debug.Log("Nada");
+                    gm.deactivate(boxParent.index);
+                }
+            }
+        }
     }
 
     private void OnMouseDown()
@@ -36,5 +58,7 @@ public class OpenCloseBox : MonoBehaviour
             gm.requestActive(boxParent.index);
         }
     }
+
+
 
 }

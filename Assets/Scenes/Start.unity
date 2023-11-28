@@ -643,7 +643,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: -0.000091552734, y: 0}
+  m_SizeDelta: {x: 0.000091552734, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439372850
 MonoBehaviour:
@@ -667,7 +667,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6842d3a5efdfad74a873dc8b92cd3ee0, type: 3}
-    m_FontSize: 75
+    m_FontSize: 51
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 7
@@ -680,12 +680,12 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Move a/w or </>
 
-    Scale the blocks
+    Click blocks and drag to scale
 
     Avoid worms
 
-    DON''T PRESS
-    "P" please'
+    DON''T
+    PRESS "P" please'
 --- !u!222 &439372851
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1206,6 +1206,7 @@ GameObject:
   - component: {fileID: 969024410}
   - component: {fileID: 969024409}
   - component: {fileID: 969024408}
+  - component: {fileID: 969024411}
   m_Layer: 5
   m_Name: SpeechBubble
   m_TagString: Untagged
@@ -1234,8 +1235,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -845.03503, y: -233.65002}
-  m_SizeDelta: {x: 1690.0698, y: -467.29996}
+  m_AnchoredPosition: {x: -844.7001, y: -233.65002}
+  m_SizeDelta: {x: 1689.3999, y: -467.29996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969024408
 MonoBehaviour:
@@ -1256,6 +1257,12 @@ MonoBehaviour:
   - {fileID: 1257652209}
   - {fileID: 1616825282}
   rules: {fileID: 1796639791}
+  clips:
+  - {fileID: 8300000, guid: b0c39e1ab2298b54abf562cb7cb6c619, type: 3}
+  - {fileID: 8300000, guid: faf0644893aab1f4b879971c724fe221, type: 3}
+  - {fileID: 8300000, guid: b0c39e1ab2298b54abf562cb7cb6c619, type: 3}
+  - {fileID: 8300000, guid: 9e142a97ca62f9d43bb96da27d872218, type: 3}
+  - {fileID: 8300000, guid: 06ab6be78ddf19f48beba27905bec8a0, type: 3}
 --- !u!114 &969024409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,6 +1301,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969024406}
   m_CullTransparentMesh: 0
+--- !u!82 &969024411
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969024406}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.596
+  m_Pitch: 0.78
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &996733962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,12 +1944,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 247.3
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1153, y: 1092}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.411
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2336,8 +2439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200.90509, y: 0}
-  m_SizeDelta: {x: 401.80978, y: 0}
+  m_AnchoredPosition: {x: -132.00009, y: 0}
+  m_SizeDelta: {x: 263.99982, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403095651
 MonoBehaviour:

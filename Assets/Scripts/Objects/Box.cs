@@ -47,9 +47,7 @@ public class Box : MonoBehaviour
             xc = bolt.transform.position.x;
             yc = bolt.transform.position.y;
         }
-        
 
-        Debug.Log(x0 + "," + x1 + "," + y0 + "," + y1);
     }
 
     private void Update()
@@ -103,7 +101,7 @@ public class Box : MonoBehaviour
         }
     }
 
-    Vector2 MoveCenter(Vector2 d)
+    public Vector2 MoveCenter(Vector2 d)
     {
 
         if (fixedInPlace) return new Vector2(0, 0);

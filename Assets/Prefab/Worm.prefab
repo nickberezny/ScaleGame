@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  Ghost: {fileID: 1209799345291985101, guid: a30ad7b1c32f2e340ad102541f4948b6, type: 3}
   castColl: {fileID: 6713076823317352121}
 --- !u!50 &883042970
 Rigidbody2D:

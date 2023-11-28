@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 4769721840607636512}
   - component: {fileID: 6841779520926328364}
   - component: {fileID: 5675190779097653707}
+  - component: {fileID: 1815970385593262964}
   m_Layer: 0
   m_Name: Bun
   m_TagString: box
@@ -499,6 +500,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1815970385593262964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841779520926328371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3663be37e93d3e4fb7320d76c1238f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ghost: {fileID: 1209799345291985101, guid: a30ad7b1c32f2e340ad102541f4948b6, type: 3}
+  Pants: {fileID: 0}
+  ears:
+  - {fileID: 6841779522628961669}
+  - {fileID: 6841779520611246988}
 --- !u!1 &6841779521089338297
 GameObject:
   m_ObjectHideFlags: 0

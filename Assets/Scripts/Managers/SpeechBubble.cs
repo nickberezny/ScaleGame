@@ -6,13 +6,18 @@ public class SpeechBubble : MonoBehaviour
 {
     [SerializeField] RectTransform[] bubbles;
     [SerializeField] RectTransform rules;
+
+    [SerializeField] AudioClip[] clips;
+
+    AudioSource source;
     int currentActive = -1;
 
     int popBubbleCounter = 0;
 
     private void Awake()
     {
-        for(int i = 0; i < bubbles.Length; i++)
+        source = GetComponent<AudioSource>();
+        for (int i = 0; i < bubbles.Length; i++)
         {
             bubbles[i].gameObject.SetActive(false);
         }
@@ -25,6 +30,8 @@ public class SpeechBubble : MonoBehaviour
         if(currentActive > -1) bubbles[currentActive].gameObject.SetActive(false);
         bubbles[i].gameObject.SetActive(true);
         currentActive = i;
+        source.clip = clips[i];
+        source.Play();
         popBubbleCounter = 15;
         StopCoroutine(waitToPop());
         StartCoroutine(waitToPop());

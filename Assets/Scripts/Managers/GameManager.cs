@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     private OpenCloseBox openClose;
 
-    int activeBox;
+    public int activeBox;
 
     private void Awake()
     {
@@ -27,14 +27,14 @@ public class GameManager : MonoBehaviour
         activeBox = -1;
     }
 
+    private void Update()
+    {
+       
+    }
+
     public bool requestActive(int index)
     {
-        if (activeBox >= 0)
-        {
-            boxes[activeBox].changeBoxStatus(false);
-        }
-        boxes[index].changeBoxStatus(true);
-        activeBox = index;
+        StartCoroutine(SetActiveNext(index));
         return true;
     }
 
@@ -42,6 +42,18 @@ public class GameManager : MonoBehaviour
     {
         boxes[index].changeBoxStatus(false);
         if (activeBox == index) activeBox = -1;
+    }
+
+    IEnumerator SetActiveNext(int index)
+    {
+        yield return new WaitForEndOfFrame();
+        if (activeBox >= 0)
+        {
+            boxes[activeBox].changeBoxStatus(false);
+        }
+        boxes[index].changeBoxStatus(true);
+        activeBox = index;
+        
     }
 
 }

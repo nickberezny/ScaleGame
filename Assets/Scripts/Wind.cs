@@ -11,6 +11,8 @@ public class Wind : MonoBehaviour
     bool hitPlayer = false;
     bool hitPlayerLastTime = false;
 
+    public GameObject boxParent;
+
     AudioSource source;
 
     private void Awake()
@@ -29,9 +31,9 @@ public class Wind : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            Debug.Log(hits[i].transform.tag);
-            if (hits[i].transform.tag == "box")
+            if ((hits[i].transform.tag == "box" || hits[i].transform.tag == "Flag") && hits[i].transform.gameObject != boxParent)
             {
+
                 hits[i].transform.GetComponent<Rigidbody2D>().AddForce(strength * dir);
                 if(hits[i].transform.name == "Bun")
                 {
